@@ -51,6 +51,15 @@
         },
         {
             "type": "shell",
+            "script": "scripts/mysql.sh",
+            "override": {
+                "virtualbox-iso": {
+                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
+                }
+            }
+        },
+        {
+            "type": "shell",
             "script": "scripts/mroonga.sh",
             "override": {
                 "virtualbox-iso": {
@@ -71,7 +80,7 @@
         {
             "type": "vagrant",
             "keep_input_artifact": true,
-            "output": "./builds/Ubuntu-14.04-x86_64.box"
+            "output": "./builds/Ubuntu-14.04-x86_64-with-mroonga.box"
         }
     ]
 }
